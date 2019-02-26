@@ -1,9 +1,8 @@
 import Type from "../const/Type"
 const initState={
-    status: "",
+    allUsers: [],
     currentUser: null,
     errorMessage: "",
-    statusErr: false,
     vErrorMessage: "",
     vErrorFlag: false,
 }
@@ -13,13 +12,11 @@ const authReducer = (state = initState, action) => {
         case Type.currentUser:
         return state={
             ...state,
-            status: action.userStatus,
             currentUser: action.currentUser
         }
         case Type.currentUserError:
         return state = {
             ...state,
-            status: "",
             currentUser: null,
         }
         case Type.validate :
@@ -36,18 +33,16 @@ const authReducer = (state = initState, action) => {
         }
         case Type.logOut:
         return state;
-        case Type.SignUpVS:
-        return state = {
-            ...state,
-            errorMessage: "Please select one of these options.",
-            statusErr: true,
-        }
         case Type.remove :
             return state = {
                 ...state,
                 errorMessage: "",
-                statusErr: false,
         }
+        case Type.pervDataOfAllUsers:
+            return {
+                ...state,
+                allUsers: action.userData,
+            }
         default:
         return state;
     }

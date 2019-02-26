@@ -37,10 +37,7 @@ export const CURRENTUSER = () => {
     return dispatch => {
         firebase.auth().onAuthStateChanged((user) => {
             if (user) {
-                firebase.database().ref().child(`Status/${user.uid}`).on("value", (snapshot) => {
-                    const s = snapshot.val()
-                    dispatch({ type: Type.currentUser, currentUser: user, userStatus: s.status })
-                })
+                    dispatch({ type: Type.currentUser, currentUser: user})
             } else {
                 dispatch({ type: Type.currentUserError })
             }
@@ -60,5 +57,23 @@ export const LOGOUT = () => {
     return dispatch => {
         firebase.auth().signOut();
         dispatch({ type: Type.logOut })
+    }
+}
+
+export const PervDataOfAllUsers = () => {
+    return dispatch => {
+        firebase.database().ref().child("Users").on("value", (snapshot) => {
+            const data = snapshot.val()
+            const TemArr = []
+            for (let key in data) {
+                TemArr.push({
+                    UserDataId: key,
+                    userId: data[key].userId,
+                    name: data[key].name,
+                    email: data[key].email,
+                })
+            }
+            dispatch({ type: Type.pervDataOfAllUsers, userData: TemArr })
+        })
     }
 }

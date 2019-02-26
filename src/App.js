@@ -5,8 +5,13 @@ import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import NavBar from './components/NavBar';
 import PostNewTweet from './components/PostNewTweet';
 import AllTweets from './components/AllTweets';
+import { CURRENTUSER} from './store/actions/authActions';
 
 class App extends Component {
+  componentDidMount(){
+    this.props.currentUser();
+    
+  }
   render() {
     return (
       <div className="App">
@@ -25,7 +30,12 @@ class App extends Component {
 }
 const mapStateToProps = (state) => {
   return{
-    user: null
+    user: state.auth.currentUser,
   }
 }
-export default connect(mapStateToProps)(App);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    currentUser: () => dispatch(CURRENTUSER()),
+  }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(App);

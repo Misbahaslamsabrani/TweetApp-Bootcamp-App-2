@@ -84,11 +84,11 @@ class SignUPIN extends Component {
     }
 
     render() {
-        return (<div>
-            <nav className="nav-wrapper pink darken-1">
+        return (<div className="container">
+            <nav className="nav-wrapper blue">
                 <div className="container">
-                    <span className="brand-logo hide-on-small-only">Real-time Parking Booking System</span>
-                    <span className="hide-on-med-and-up">Real-time Parking Booking System</span>
+                    <span className="brand-logo hide-on-small-only">Tweet App</span>
+                    <span className="hide-on-med-and-up">Tweet App</span>
                 </div>
             </nav>
             <br />
@@ -98,17 +98,17 @@ class SignUPIN extends Component {
                     <div className="col s12 m6 l6 offset-l3 offset-m3">
                         <div className="card z-depth-2">
                             <form onSubmit={this.onAdd}>
-                                <div className="card-content grey lighten-4">
-                                    <div className="card-title z-depth-1 center pink  white-text">Sign In</div>
+                                <div className="card-content blue lighten-5">
+                                    <div className="card-title z-depth-1 center blue  lighten-1  white-text">Sign In</div>
                                     <br />
                                     <div className="row">
                                     <InputS n="UserEmailL" v={this.state.UserEmailL} t="text" oc={this.whenChange} f="lemail" e={this.props.lemail} m={this.props.lmess} d="lemail" l="Email" />
                                     <InputS n="UserPassL" v={this.state.UserPassL} t="password" oc={this.whenChange} f="pass" p={this.props.lpass} m={this.props.lmess} d="pass" l='Password' />
                                     </div>
                                 </div>
-                                <div className="card-action grey lighten-4">
-                                    <Button cn="btn form_bu pink" t="Sign In" />
-                                    <span className="grey-text darken-1">Don't have an account?</span>  &nbsp; <An cn="pink-text text-darken-1 form_a text" t="Register here" oc={this.whenClick} />
+                                <div className="card-action blue lighten-5">
+                                    <Button cn="btn form_bu blue  lighten-1" t="Sign In" />
+                                    <span className="grey-text darken-1">Don't have an account?</span>  &nbsp; <An cn="blue-text text-darken-1 form_a text" t="Register here" oc={this.whenClick} />
                                 </div>
                             </form>
                         </div>
@@ -118,11 +118,11 @@ class SignUPIN extends Component {
                     <div className="col s12 m6 l6 offset-l3 offset-m3">
                         <div className="card z-depth-2">
                             <form onSubmit={this.onAdd}>
-                                <div className="card-content grey lighten-4">
-                                    <div className="card-title z-depth-1 center pink  white-text">Register New User</div>
+                                <div className="card-content blue lighten-5">
+                                    <div className="card-title z-depth-1 center blue  lighten-1 white-text">Register New User</div>
                                     <br />
                                     <div className="row">
-                                    <InputS n="Name" v={this.state.Name} t="text" oc={this.whenChange} f="name" d="name" l="Name" />
+                                    <InputS n="Name" v={this.state.Name} t="text" oc={this.whenChange} f="name" d="name" l="User Name" />
                                     <InputS n="UserEmailS" v={this.state.UserEmailS} t="text" oc={this.whenChange} f="semail"  d="semail" l="Email" />
                                     <InputS n="UserPassS" v={this.state.UserPassS} t="password" oc={this.whenChange} f="pass"  d="pass" l='Password' />
                                     {this.props.errFlag ? (
@@ -145,9 +145,9 @@ class SignUPIN extends Component {
                                     ) : (null)}
                                     </div>
                                 </div>
-                                <div className="card-action grey lighten-4">
-                                    <Button cn="btn form_bu pink " t="Register" />
-                                    <span className="grey-text darken-1">Already have an account?</span> &nbsp; <An cn="pink-text text-darken-1 form_a text" t="Sign In" oc={this.WhenClick} />
+                                <div className="card-action blue lighten-5">
+                                    <Button cn="btn form_bu blue  lighten-1 " t="Register" />
+                                    <span className="grey-text darken-1">Already have an account?</span> &nbsp; <An cn="blue-text text-darken-1 form_a text" t="Sign In" oc={this.WhenClick} />
                                 </div>
                             </form>
                         </div>
