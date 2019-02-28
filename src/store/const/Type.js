@@ -18,6 +18,7 @@
     validate: "VALIDATION",
     removeErrorMess: "REMOVE_ERROR_MESSAGES",
     pervDataOfAllUsers: "PERV_DATA_OF_ALL_USERS",
-    
+    likedTweet: "LIKED_TWEET",
+    pervDataOfLikes: "PERV_DATA_OF_LIKIES",
 }
 export default Type;

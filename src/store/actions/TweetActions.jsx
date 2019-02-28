@@ -16,6 +16,19 @@ export const ADD_NEW_REPLY = (obj) => {
     }
 }
 
+export const Liked_Tweet = (obj) => {
+    return dispatch => {
+        firebase.database().ref().child("Likes").push(obj)
+        dispatch({type: Type.likedTweet})
+    }
+}
+export const UnLiked_Tweet = (lid) => {
+    return dispatch => {
+        firebase.database().ref().child(`Likes/${lid}`).remove();
+        dispatch({type: Type.likedTweet})
+    }
+}
+
 export const PervDataOfAllTweets = () => {
     return dispatch => {
         firebase.database().ref().child("Tweets").on("value", (snapshot) => {
@@ -50,3 +63,20 @@ export const PervDataOfAllReplies = () => {
         })
     }
 }
+export const PervDataOfAllLikes = () => {
+    return dispatch => {
+        firebase.database().ref().child("Likes").on("value", (snapshot) => {
+            const data = snapshot.val()
+            const TemArr = []
+            for (let key in data) {
+                TemArr.push({
+                    LikedId: key,
+                    TweetId: data[key].TweetId,
+                    likedBy: data[key].likedBy,
+                })
+            }
+            dispatch({ type: Type.pervDataOfLikes, allLikes: TemArr })
+        })
+    }
+}
+

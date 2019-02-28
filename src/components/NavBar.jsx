@@ -2,12 +2,13 @@ import React, { Component }from 'react';
 import {NavLink} from "react-router-dom";
 import { connect } from 'react-redux';
 import { PervDataOfAllUsers, LOGOUT } from '../store/actions/authActions';
-import { PervDataOfAllTweets, PervDataOfAllReplies } from '../store/actions/TweetActions';
+import { PervDataOfAllTweets, PervDataOfAllReplies, PervDataOfAllLikes } from '../store/actions/TweetActions';
 class NavBar extends Component{
     componentDidMount(){
         this.props.allUsers();
         this.props.allTweets();
         this.props.allReplies();
+        this.props.allLikes();
     }
     render(){
         return (
@@ -34,7 +35,6 @@ class NavBar extends Component{
     }
 }
 const mapStateToProps = (state) => {
-    console.log(state)
     return{
       user: state.auth.currentUser,
     }
@@ -44,6 +44,7 @@ const mapDispatchToProps = (dispatch) => {
       allUsers: () => dispatch(PervDataOfAllUsers()),
       allTweets: () => dispatch(PervDataOfAllTweets()),
       allReplies: () => dispatch(PervDataOfAllReplies()),
+      allLikes: () => dispatch(PervDataOfAllLikes()),
       logOut: () => dispatch(LOGOUT()),
     }
   }

@@ -5,7 +5,6 @@ const allReplies = (props) => {
     const goBack = () => {
         props.history.push("/")
     }
-    console.log(props)
     return (
         props.user ? (<div className="container"><div className="grey-text underline form_a" onClick={goBack}> &nbsp;
         <i className="material-icons">arrow_back</i></div>
@@ -31,7 +30,6 @@ const allReplies = (props) => {
     );
 }
 const mapStateToProps = (state,ownProps) => {
-    console.log(ownProps)
     const paramsTweetId = ownProps.match.params.id;
     const SpecififcTweet = state.tweet.allTweets.find(v => v.TweetId === paramsTweetId)
     return{

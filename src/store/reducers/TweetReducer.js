@@ -2,6 +2,7 @@ import Type from "../const/Type";
 const initState = {
     allTweets: [],
     allReplies: [],
+    allLikes: [],
 }
 export const TweetReducer = (state = initState, action) => {
     switch (action.type) {
@@ -15,10 +16,17 @@ export const TweetReducer = (state = initState, action) => {
                 ...state,
                 allReplies: action.allReplies,
             }
+        case Type.pervDataOfLikes:
+        return state = {
+            ...state,
+            allLikes: action.allLikes,
+        }
         case Type.addNewTweet:
             return state;
         case Type.addNewReply:
             return state;
+        case Type.likedTweet:
+        return state;
         default:
             return state;
     }
