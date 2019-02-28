@@ -9,6 +9,13 @@ export const ADD_NEW_TWEET = (Obj) => {
     }
 }
 
+export const ADD_NEW_REPLY = (obj) => {
+    return dispatch => {
+        firebase.database().ref().child("Replies").push(obj)
+        dispatch({type: Type.addNewReply})
+    }
+}
+
 export const PervDataOfAllTweets = () => {
     return dispatch => {
         firebase.database().ref().child("Tweets").on("value", (snapshot) => {
@@ -19,13 +26,27 @@ export const PervDataOfAllTweets = () => {
                     TweetId: key,
                     userId: data[key].userId,
                     tweet: data[key].tweet,
-                    reply: data[key].reply,
                     tweetBy: data[key].tweetBy,
-                    like: data[key].like,
                 })
             }
-            console.log(TemArr)
             dispatch({ type: Type.pervDataOfTweets, allTweets: TemArr })
+        })
+    }
+}
+export const PervDataOfAllReplies = () => {
+    return dispatch => {
+        firebase.database().ref().child("Replies").on("value", (snapshot) => {
+            const data = snapshot.val()
+            const TemArr = []
+            for (let key in data) {
+                TemArr.push({
+                    ReplyId: key,
+                    TweetId: data[key].TweetId,
+                    reply: data[key].reply,
+                    replyBy: data[key].replyBy,
+                })
+            }
+            dispatch({ type: Type.pervDataOfReplies, allReplies: TemArr })
         })
     }
 }

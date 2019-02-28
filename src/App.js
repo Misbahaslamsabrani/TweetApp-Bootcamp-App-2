@@ -6,6 +6,8 @@ import NavBar from './components/NavBar';
 import PostNewTweet from './components/PostNewTweet';
 import AllTweets from './components/AllTweets';
 import { CURRENTUSER} from './store/actions/authActions';
+import Reply from './components/Reply';
+import allReplies from './components/allReplies';
 
 class App extends Component {
   componentDidMount(){
@@ -19,8 +21,10 @@ class App extends Component {
           <Fragment>
             <NavBar />
           <Switch>
-            <Route exact path="/newTweet" component={PostNewTweet} />
             <Route exact path="/" component={AllTweets} />
+            <Route exact path="/newTweet" component={PostNewTweet} />
+            <Route exact path="/reply/:id" component={Reply} />
+            <Route exact path="/allReplies/:id" component={allReplies} />
           </Switch>
           </Fragment>
         </Router>): (<Dashboard />)}

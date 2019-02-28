@@ -5,35 +5,27 @@ import Loader from './Loader/Loader';
 class PostNewTweet extends Component {
     state = {Tweet: ""}
     whenPost = () => {
-        this.props.addNewTweet({userId:this.props.user.uid ,
-            tweet: this.state.Tweet, tweetBy: this.props.SpecificUser.name, reply: null, like: null})
+        this.props.addNewTweet({userId:this.props.user.uid,
+            tweet: this.state.Tweet, tweetBy: this.props.SpecificUser.name})
         this.setState({Tweet: ""})
+        this.props.history.push("/")
     }
     whenEmpty = () => {
         return this.state.Tweet === ""
     }
     render() {
-        console.log(this.props.SpecificUser, this.props.user)
         return (
            this.props.user ? ( <div className="container">
            <br/>
            <br/>
                <div className="row">
-                   <div className="col l8 s12 m8 offset-l2">
-                       <div className="card blue lighten-5">
-                           <div className="card-content">
-                               <div className="card-title blue-text lighten-1">
-                                   Post New Tweet
-                               </div>
+                   <div className="col l8 s12 m8 offset-l2 z-depth-2">
                                <div className="input-field">
-                                   <textarea name="Tweet" id="teet" cols="30" rows="10" className="materialize-textarea" value={this.state.Tweet} onChange={(event) => this.setState({Tweet: event.target.value})}></textarea>
-                                   <label htmlFor="tweet">Enter your tweet</label>
+                                   <textarea name="Tweet" placeholder="What's happening?" id="teet" className="materialize-textarea" value={this.state.Tweet} onChange={(event) => this.setState({Tweet: event.target.value})}></textarea>
                                </div>
-                               <div className="card-action">
-                               <button className="btn blue lighten-2" disabled={this.whenEmpty()} onClick={this.whenPost}>Post</button>
-                               </div>
-                           </div>
-                       </div>
+                               <button className="btn blue lighten-2 right" disabled={this.whenEmpty()} onClick={this.whenPost}>Tweet</button>
+                               <br/>
+                               &nbsp;
                    </div>
                </div>
            </div>) : (<Loader />)

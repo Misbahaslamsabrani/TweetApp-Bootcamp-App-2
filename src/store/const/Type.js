@@ -1,6 +1,8 @@
  const Type = {
     pervDataOfTweets: "PERV_DATA_OF_TWEETS",
     addNewTweet: "ADD_NEW_TWEET",
+    pervDataOfReplies: "PERV_DATA_OF_REPLIES",
+    addNewReply: "ADD_NEW_REPLY",
     logInS: "LOGIN_SUCCESS",
     logInE: "LOGIN_ERROR",
     signUpS: "SIGNUP_SUCCESS",

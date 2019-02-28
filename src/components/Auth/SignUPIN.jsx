@@ -126,19 +126,19 @@ class SignUPIN extends Component {
                                     <InputS n="UserEmailS" v={this.state.UserEmailS} t="text" oc={this.whenChange} f="semail"  d="semail" l="Email" />
                                     <InputS n="UserPassS" v={this.state.UserPassS} t="password" oc={this.whenChange} f="pass"  d="pass" l='Password' />
                                     {this.props.errFlag ? (
-                                            <div className="col l12 s12 center red-text">
+                                            <div className="col l12 s12  red-text">
                                                 <h6>{this.props.errmess}
                                                 </h6>
                                             </div>
                                     ) : (null)}
                                     {this.props.semail ? (
-                                            <div className="col l12 s12 center red-text">
+                                            <div className="col l12 s12  red-text">
                                                 <h6>{this.props.smess}
                                                 </h6>
                                             </div>
                                     ) : (null)}
                                     {this.props.spass ? (
-                                            <div className="col l12 s12 center red-text">
+                                            <div className="col l12 s12  red-text">
                                                 <h6>{this.props.smess}
                                                 </h6>
                                             </div>
