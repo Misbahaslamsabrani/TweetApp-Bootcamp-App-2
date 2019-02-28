@@ -21,14 +21,14 @@ class AllTweets extends Component {
                             <li key={v.TweetId} className="collection-item myCollections">
                             <span className="title"><b>{v.tweetBy}</b> </span>
                             <p className="grey-text text-darken-4">{v.tweet}</p>
+                            {this.props.allLikes.filter(r => r.TweetId === v.TweetId).length > 0 ? (<span className="badge grey white-text">
+                            {this.props.allLikes.filter(r => r.TweetId === v.TweetId).length}</span>) : (null)}
                             {this.props.SpecificUserLikes.some(l => l.TweetId === v.TweetId) ? (<button className="btn-floating transparent secondary-content" >
                               <i className="material-icons red-text text-lighten-1" onClick={() => this.unLikeTweet(this.props.SpecificUserLikes, v.TweetId)}>favorite</i>
                             </button>) : (<button className="btn-floating transparent secondary-content" >
                               <i className="material-icons blue-text text-lighten-1" onClick={() => {this.props.like({likedBy: this.props.user.uid, TweetId: v.TweetId})}}>favorite_border</i>
                             </button>)}
                             <span className="secondary-content hide-on-small-only">
-                            &nbsp; 
-                            &nbsp;
                             &nbsp; 
                             &nbsp;
                             </span>
@@ -38,12 +38,6 @@ class AllTweets extends Component {
                             {this.props.allReplies.filter(r => r.TweetId === v.TweetId).length > 0 ? (<span className="badge grey white-text">
                             {this.props.allReplies.filter(r => r.TweetId === v.TweetId).length}</span>) : (<span className="secondary-content hide-on-small-only">
                             &nbsp; 
-                            &nbsp;
-                            &nbsp;
-                            &nbsp;
-                            &nbsp;
-                            &nbsp;
-                            &nbsp;
                             &nbsp;
                             </span>)}
                             <button className="btn-floating transparent secondary-content">
@@ -71,6 +65,7 @@ const mapStateToProps = (state) => {
     return {
         user: state.auth.currentUser,
         allTweets: state.tweet.allTweets,
+        allLikes: state.tweet.allLikes,
         allReplies: state.tweet.allReplies,
         SpecificUserLikes: state.tweet.allLikes.filter(v => v.likedBy === state.auth.currentUser.uid),
     }
