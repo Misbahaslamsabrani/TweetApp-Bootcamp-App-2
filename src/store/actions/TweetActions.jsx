@@ -29,6 +29,13 @@ export const UnLiked_Tweet = (lid) => {
     }
 }
 
+export const Delete_Tweet = (tid) => {
+    return dispatch => {
+        firebase.database().ref().child(`Tweets/${tid}`).remove()
+        dispatch({type: Type.deleteTweet})
+    }
+}
+
 export const PervDataOfAllTweets = () => {
     return dispatch => {
         firebase.database().ref().child("Tweets").on("value", (snapshot) => {

@@ -27,6 +27,8 @@ export const TweetReducer = (state = initState, action) => {
             return state;
         case Type.likedTweet:
         return state;
+        case Type.deleteTweet:
+        return state;
         default:
             return state;
     }

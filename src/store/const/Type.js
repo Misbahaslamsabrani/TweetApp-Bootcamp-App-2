@@ -20,5 +20,6 @@
     pervDataOfAllUsers: "PERV_DATA_OF_ALL_USERS",
     likedTweet: "LIKED_TWEET",
     pervDataOfLikes: "PERV_DATA_OF_LIKIES",
+    deleteTweet: "DELETE_TWEET",
 }
 export default Type;

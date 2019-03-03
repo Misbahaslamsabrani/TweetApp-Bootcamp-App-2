@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Loader from "./Loader/Loader"
-import { Liked_Tweet, UnLiked_Tweet } from '../store/actions/TweetActions';
+import { Liked_Tweet, UnLiked_Tweet, Delete_Tweet } from '../store/actions/TweetActions';
 class AllTweets extends Component {
     unLikeTweet = (likes, id) => {
         const likeObj = likes.find(v => v.TweetId === id)
@@ -21,6 +21,9 @@ class AllTweets extends Component {
                             <li key={v.TweetId} className="collection-item myCollections">
                             <span className="title"><b>{v.tweetBy}</b> </span>
                             <p className="grey-text text-darken-4">{v.tweet}</p>
+                            <br/>
+                            {v.userId === this.props.user.uid ?
+                            <button className="btn-floating transparent secondary-content"> <i className="material-icons blue-text text-lighten-1" onClick={() => {this.props.deleteTweet(v.TweetId)}}>delete</i></button> : null}
                             {this.props.allLikes.filter(r => r.TweetId === v.TweetId).length > 0 ? (<span className="badge grey white-text">
                             {this.props.allLikes.filter(r => r.TweetId === v.TweetId).length}</span>) : (null)}
                             {this.props.SpecificUserLikes.some(l => l.TweetId === v.TweetId) ? (<button className="btn-floating transparent secondary-content" >
@@ -45,6 +48,7 @@ class AllTweets extends Component {
                             </button>
                             <br/>
                             <br/>
+                            <br/>
                             <hr/>
                             </li>
                             ).reverse()) : (<li key={"noTweet"} className="collection-item">Sorry, No Tweets.</li>)}
@@ -59,6 +63,7 @@ const mapDispatchToProps = (dispatch) => {
     return {
         like: (obj) => dispatch(Liked_Tweet(obj)),
         unLike: (lid) => dispatch(UnLiked_Tweet(lid)),
+        deleteTweet: (tid) => dispatch(Delete_Tweet(tid)),
     }
 }
 const mapStateToProps = (state) => {
